@@ -3,9 +3,10 @@ import os
 def export_all_python_scripts_to_txt_from_mvc_project(main_directory_path, output_filename):
     # Define the sections for export
     sections = {
-        "routes": os.path.join(main_directory_path, "routes"),
-        "views": os.path.join(main_directory_path, "views"),
-        "controllers": os.path.join(main_directory_path, "controllers"),
+        "routes": os.path.join(main_directory_path, "src\\routes"),
+        "views": os.path.join(main_directory_path, "src\\views"),
+        "controllers": os.path.join(main_directory_path, "src\\controllers"),
+        # "ServerWise": main_directory_path
     }
 
     # Ensure the main directory exists
@@ -27,13 +28,12 @@ def export_all_python_scripts_to_txt_from_mvc_project(main_directory_path, outpu
                 # Iterate over all files in the directory
                 for filename in os.listdir(directory):
                     print("FILENAME FOUND:\t", filename)
-                    if filename.endswith('.py'):
-                        filepath = os.path.join(directory, filename)
-                        # Read the content of the Python file
-                        with open(filepath, 'r', encoding='utf-8') as file:
-                            content = file.read()
-                            # Write the content to the output file in the desired format
-                            output_file.write(f'{filename}:\n{content}\n\n')
+                    filepath = os.path.join(directory, filename)
+                    # Read the content of the Python file
+                    with open(filepath, 'r', encoding='utf-8') as file:
+                        content = file.read()
+                        # Write the content to the output file in the desired format
+                        output_file.write(f'{filename}:\n{content}\n\n')
                 output_file.write('```\n\n')
             print(f"Exported all Python scripts to {output_filename}")
     except Exception as e:
@@ -41,7 +41,7 @@ def export_all_python_scripts_to_txt_from_mvc_project(main_directory_path, outpu
 
 
 # Example usage
-main_directory_path = 'C:\\Users\\user\\Documents\\git\\ServerWise\\src'
+main_directory_path = 'C:\\Users\\user\\Documents\\git\\ServerWise'
 output_filename = 'exported_scripts.txt'
 
 #  TODO!: export to only one file like models : ```{models_content}``` views: ```{views_content}``` controllers: ```{controllers_content}```
