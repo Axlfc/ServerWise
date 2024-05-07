@@ -1,10 +1,10 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const usersRouter = require('./routes/users');
+const usersRouter = require('./src/routes/users');
 
 // Set the views directory
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, './src/views'));
 
 // Set the view engine to EJS
 app.set('view engine', 'ejs');
